@@ -48,3 +48,10 @@ function searchApi(query) {
 }
 
 submitBtn.addEventListener('click', getParams);
+
+document.getElementById('userInput').addEventListener('keydown', function (e) {
+  if (e.which === 13) {
+    e.preventDefault();
+    getParams();
+  }
+});
