@@ -7,8 +7,7 @@ body{
 
 header{
   font-size: 24px;
-  margin: 0;
-  margin-top: -10px;
+  margin: 0 0 25px;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -28,6 +27,7 @@ h1, h2, h3, h4, h5, h6{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 75px;
 }
 
 #logo{

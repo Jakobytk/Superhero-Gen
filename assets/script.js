@@ -28,13 +28,26 @@ function searchApi(query) {
       console.log(data);
     })
 
-  fetch(giphyQueryUrl)
+  fetch(giphyQueryUrl, {
+    headers: {
+      'Content-Type': 'application/json',
+      
+    }
+  })
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      var gifBox = document.getElementById("container");
+      for (var i = 0; i < data.data.length; i++){
+        var gifList = document.createElement("img");
+      gifList.setAttribute("src", data.data[i].embed_url);
+      gifBox.append(gifList);
+      }
+      console.log(gifList);
     })
 }
 
 submitBtn.addEventListener('click', getParams);
+
+
