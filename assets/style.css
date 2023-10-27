@@ -7,10 +7,12 @@ body{
 
 header{
   font-size: 24px;
-  margin: 0 0 25px;
+  margin: 0;
+  margin-top: -10px;
 }
 
 h1, h2, h3, h4, h5, h6{
+  font-size: 24px;
   margin: 0;
   padding: 10px 20px;
   text-align: center;
@@ -27,7 +29,34 @@ h1, h2, h3, h4, h5, h6{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 75px;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+
+.wikiQuery{
+  text-align: center;
+  margin-top: 100px;
+  padding: 50px;
+  font-size: 14px;
+}
+
+.giphyQuery{
+  text-align: center;
+  width: 300px;
+  height: 200px;
+  margin: 100px 50 50 0;
+  padding: 50px;
+  font-size: 14px;
+}
+
+.giphyQuery img {
+  max-width: 100%;
+  height: auto;
 }
 
 #logo{
@@ -64,11 +93,38 @@ h1, h2, h3, h4, h5, h6{
 }
 
 @media(max-width: 600px){
-  #userInput{
-    width: 90%;
+  h1, h2, h3, h4, h5, h6{
+    font-size: 16px;
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
   }
 
   .nav-wrapper{
     padding-top: 0;
+  }
+
+  .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+  }
+  
+  .wikiQuery{
+    font-size: 10px;
+  }
+  
+  .giphyQuery{
+    font-size: 10px;
+  }
+  
+  .giphyQuery img {
+    max-width: 70%;
+    height: auto;
+  }
+
+  #userInput{
+    width: 90%;
   }
 }
