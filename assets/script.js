@@ -19,7 +19,7 @@ function searchApi(query) {
 
   if (query) {
     wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + query;
-    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+query+'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
+    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+ query +'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
   }
 
   fetch(wikiQueryUrl)
@@ -28,6 +28,21 @@ function searchApi(query) {
     })
     .then(function (data) {
       console.log(data);
+
+      fetch(wikiQueryUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data.query.search);
+  
+        wikiQueryDiv.innerHTML = ''; 
+  
+        data.query.search.forEach(function (wiki) {
+          var wikiQuery = document.createElement('div');
+          wikiQuery.innerHTML = wiki.title;
+          wikiQueryDiv.appendChild(wikiQuery);
+      });
     });
 
   fetch(giphyQueryUrl)
@@ -45,8 +60,8 @@ function searchApi(query) {
         giphyQueryDiv.appendChild(giphyQuery);
     });
   });
+})
 }
-
 submitBtn.addEventListener('click', getParams);
 
 document.getElementById('userInput').addEventListener('keydown', function (e) {
