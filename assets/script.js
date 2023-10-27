@@ -1,5 +1,7 @@
 // variable for search button
 var submitBtn = document.getElementById('submitBtn');
+var wikiQueryDiv  = document.querySelector('.wikiQuery');
+var giphyQueryDiv  = document.querySelector('.giphyQuery');
 
 
 function getParams() {
@@ -25,37 +27,24 @@ function searchApi(query) {
       return response.json();
     })
     .then(function (data) {
-      var wikiBox = document.getElementById('wikiBox');
-      for (var i = 0; i < data.query.search.length; i++) {
-        var wikiList = document.createElement('p');
-        wikiList.setAttribute('div', data.query.search[i].title);
-        wikiBox.append(wikiList);
-        console.log(data.query.search[i].title)
-        }
       console.log(data);
-      console.log(data.query.search.length);
-    })
+    });
 
-  fetch(giphyQueryUrl, {
-    headers: {
-      'Content-Type': 'application/json',
-      
-    }
-  })
+  fetch(giphyQueryUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      var gifBox = document.getElementById("container");
-      for (var i = 0; i < data.data.length; i++) {
-      var gifList = document.createElement("img");
-      gifList.setAttribute("src", data.data[i].embed_url);
-      gifBox.append(gifList);
-      }
-      console.log(gifList);
-    })
+      console.log(data);
+    
+      giphyQueryDiv.innerHTML = ''; //EMPTY THE GIF
+
+      data.data.forEach(function (giphy) {
+        var giphyQuery = document.createElement('div');
+        giphyQuery.innerHTML = '<img src="' + giphy.images.fixed_height.url + '">';
+        giphyQueryDiv.appendChild(giphyQuery);
+    });
+  });
 }
 
 submitBtn.addEventListener('click', getParams);
-
-
