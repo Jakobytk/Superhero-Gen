@@ -15,6 +15,6 @@ Follow link ___ to access GitHub repository for this website (including code).
 
 #Resources
 
-<li></li>
+<li>https://www.lambdatest.com/software-testing-questions/how-to-resize-an-image-in-css</li>
 
 <li></li>
