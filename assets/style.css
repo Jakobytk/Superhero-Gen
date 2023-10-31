@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5, h6{
 .nav-wrapper{
   background-color: white;
   color: white;
-  padding: 20px 0;
 }
 
 .input-wrapper{
@@ -63,22 +62,27 @@ h1, h2, h3, h4, h5, h6{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 100px;
   background-color: #790000;
 }
 
 #logo{
   text-shadow: 2px 2px black;
+  cursor: pointer;
 }
 
 #marvel-logo{
   height: 60%;
   max-width: 25%;
+  border-radius: 5px;
+  filter: drop-shadow(2px 2px white);
 }
 
 #dc-logo{
   height: 60%;
-  max-width: 25%
+  max-width: 25%;
+  border-radius: 5px;
+  filter: drop-shadow(2px 2px black);
 }
 
 #userInput{
@@ -92,7 +96,7 @@ h1, h2, h3, h4, h5, h6{
 
 #submitBtn{
   color: white;
-  background-color: #00796B;
+  background-color: #00ad99;
   text-align: center;
   padding: 10px 20px;
   border-radius: 5px;
@@ -102,8 +106,20 @@ h1, h2, h3, h4, h5, h6{
 }
 
 #submitBtn:hover{
-  background-color: #00443b;
-  box-shadow: 0 0 10px rgb(0, 0, 0);
+  background-color: #006d60;
+  box-shadow: 0px 0px 5px 2px rgb(0, 0, 0);
+}
+
+#logo:hover{
+  text-shadow: 0px 0px black;
+}
+
+#logo:hover,
+#marvel-logo:hover,
+#dc-logo:hover{
+  cursor: pointer;
+  filter: drop-shadow(0px 0px black);
+	transform: translateX(2px) translateY(2px);
 }
 
 @media(max-width: 600px){
