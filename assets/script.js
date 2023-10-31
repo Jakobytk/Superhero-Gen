@@ -4,6 +4,10 @@ var logoBar = document.getElementById('logo-wrapper');
 var wikiQueryDiv  = document.querySelector('.wikiQuery');
 var giphyQueryDiv  = document.querySelector('.giphyQuery');
 
+// selectors for user selection based on DC or Marvel
+var dcLogoBtn = document.getElementById('dc-logo-btn');
+var marvelLogoBtn = document.getElementById('marvel-logo-btn');          
+
 
 function getParams() {
   // Get the queryvalues
@@ -63,7 +67,18 @@ function searchApi(query) {
   });
 })
 }
+
+function showDC () {
+  console.log('DC');
+}
+
+function showMarvel() {
+  console.log('Marvel');
+}
+
 submitBtn.addEventListener('click', getParams);
+dcLogoBtn.addEventListener('click', showDC);
+marvelLogoBtn.addEventListener('click', showMarvel);
 
 document.getElementById('userInput').addEventListener('keydown', function (e) {
   if (e.which === 13) {
