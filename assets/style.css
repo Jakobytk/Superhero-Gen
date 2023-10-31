@@ -3,6 +3,7 @@ body{
   padding: 0;
   font-family: sans-serif;
   font-size: 12px;
+  background-color: rgb(247, 243, 243);
 }
 
 header{
@@ -18,15 +19,38 @@ h1, h2, h3, h4, h5, h6{
   text-align: center;
 }
 
-.nav-wrapper{
-  background-color: white;
-  color: white;
-  padding: 20px 0;
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.marvel-logo-btn{
+  background:url(./images/marvellogo.png) no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 100px;
+  margin: auto;
+}
+
+.dc-logo-btn{
+  background: url(./images/dclogo.png) no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  margin: auto;
 }
 
 .input-wrapper{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -67,18 +91,8 @@ h1, h2, h3, h4, h5, h6{
   background-color: #790000;
 }
 
-#logo{
+.logo-title{
   text-shadow: 2px 2px black;
-}
-
-#marvel-logo{
-  height: 60%;
-  max-width: 25%;
-}
-
-#dc-logo{
-  height: 60%;
-  max-width: 25%
 }
 
 #userInput{
@@ -142,3 +156,5 @@ h1, h2, h3, h4, h5, h6{
     width: 90%;
   }
 }
+
+
