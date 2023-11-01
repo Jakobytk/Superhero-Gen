@@ -58,7 +58,7 @@ function searchApi(query) {
     .then(function (data) {
       console.log(data);
     
-      giphyQueryDiv.innerHTML = ''; //EMPTY THE GIF
+      giphyQueryDiv.innerHTML = '';
 
       data.data.forEach(function (giphy) {
         var giphyQuery = document.createElement('div');
@@ -68,7 +68,7 @@ function searchApi(query) {
   });
 })
 }
-/*
+
 function showDC () {
   console.log('DC');
 }
@@ -77,7 +77,7 @@ function showMarvel() {
   console.log('Marvel');
 }
 
-submitBtn.addEventListener('click', getParams);
+//submitBtn.addEventListener('click', getParams);
 dcLogoBtn.addEventListener('click', showDC);
 marvelLogoBtn.addEventListener('click', showMarvel);
 
@@ -87,7 +87,7 @@ document.getElementById('userInput').addEventListener('keydown', function (e) {
     getParams();
   }
 });
-*/
+
 //reset the page to the defualt style
 logoTitle.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#b300ff";
