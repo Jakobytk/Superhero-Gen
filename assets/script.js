@@ -10,20 +10,26 @@ var marvelLogoBtn = document.getElementById('marvel-logo-btn');
 
 function getParams() {
   // Get the queryvalues
-  var query = document.getElementById('userInput').value;
+  var dcQuery = 'DC Comic Hero'
+  var marvelQuery = 'Marvel Hero'
 
-  searchApi(query);
+  searchApi(dcQuery, marvelQuery);
 }
 
 // this function takes query argument and changes wiki url 
 // then returns data on each api
-function searchApi(query) {
+function searchApi(dcQuery, marvelQuery) {
   var wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=';
   var giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q=hero&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
 
-  if (query) {
-    wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + query;
-    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+ query +'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
+  if (dcQuery) {
+    wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + dcQuery;
+    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+ dcQuery +'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
+  }
+
+  if (marvelQuery) {
+    wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + marvelQuery;
+    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+ marvelQuery +'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
   }
 
   fetch(wikiQueryUrl)
@@ -31,7 +37,8 @@ function searchApi(query) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      console.log(data.query.search[0].pageid);
+      // var wikiResultUrl = data.query.search[0].pageid;
 
       fetch(wikiQueryUrl)
       .then(function (response) {
@@ -43,8 +50,10 @@ function searchApi(query) {
         wikiQueryDiv.innerHTML = ''; 
   
         data.query.search.forEach(function (wiki) {
-          var wikiQuery = document.createElement('div');
-          wikiQuery.innerHTML = wiki.title;
+          var wikiQuery = document.createElement('a');
+          wikiQuery.textContent = wiki.title;
+          wikiQuery.href = 'http://en.wikipedia.org/?curid=' + wiki.pageid;
+          wikiQuery.target = '_blank';
           wikiQueryDiv.appendChild(wikiQuery);
       });
     });
@@ -75,13 +84,13 @@ function showMarvel() {
   console.log('Marvel');
 }
 
-submitBtn.addEventListener('click', getParams);
-dcLogoBtn.addEventListener('click', showDC);
-marvelLogoBtn.addEventListener('click', showMarvel);
+// submitBtn.addEventListener('click', getParams);
+dcLogoBtn.addEventListener('click', getParams);
+marvelLogoBtn.addEventListener('click', getParams);
 
-document.getElementById('userInput').addEventListener('keydown', function (e) {
-  if (e.which === 13) {
-    e.preventDefault();
-    getParams();
-  }
-});
+// document.getElementById('userInput').addEventListener('keydown', function (e) {
+//   if (e.which === 13) {
+//     e.preventDefault();
+//     getParams();
+//   }
+// });
