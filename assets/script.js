@@ -1,6 +1,7 @@
 // variable for search button
 var submitBtn = document.getElementById('submitBtn');
 var logoBar = document.getElementById('logo-wrapper');
+var logoTitle = document.querySelector('.logo-title');
 var wikiQueryDiv  = document.querySelector('.wikiQuery');
 var giphyQueryDiv  = document.querySelector('.giphyQuery');
 
@@ -57,7 +58,7 @@ function searchApi(query) {
     .then(function (data) {
       console.log(data);
     
-      giphyQueryDiv.innerHTML = ''; //EMPTY THE GIF
+      giphyQueryDiv.innerHTML = '';
 
       data.data.forEach(function (giphy) {
         var giphyQuery = document.createElement('div');
@@ -76,7 +77,7 @@ function showMarvel() {
   console.log('Marvel');
 }
 
-submitBtn.addEventListener('click', getParams);
+//submitBtn.addEventListener('click', getParams);
 dcLogoBtn.addEventListener('click', showDC);
 marvelLogoBtn.addEventListener('click', showMarvel);
 
@@ -88,16 +89,16 @@ document.getElementById('userInput').addEventListener('keydown', function (e) {
 });
 
 //reset the page to the defualt style
-document.getElementById('logo').addEventListener('click', function (e) {
-  logoBar.style.backgroundColor = "#790000";
+logoTitle.addEventListener('click', function (e) {
+  logoBar.style.backgroundColor = "#b300ff";
 });
 
 //set the page to the Marvel style
-document.getElementById('marvel-logo').addEventListener('click', function (e) {
+marvelLogoBtn.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#EC1D24";
 });
 
 //reset the page to the DC style
-document.getElementById('dc-logo').addEventListener('click', function (e) {
+dcLogoBtn.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#0476F2";
 });
