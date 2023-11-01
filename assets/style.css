@@ -3,7 +3,7 @@ body{
   padding: 0;
   font-family: sans-serif;
   font-size: 12px;
-  background-color: rgb(247, 243, 243);
+  background-color: rgb(245, 245, 245);
 }
 
 header{
@@ -50,9 +50,10 @@ h1, h2, h3, h4, h5, h6{
 .dc-logo-btn{
   background: url(./images/dclogo2.png) no-repeat;
   background-size: contain;
+  mix-blend-mode: multiply;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   width: 100px;
   height: 100px;
   margin: auto;
@@ -66,33 +67,41 @@ h1, h2, h3, h4, h5, h6{
   justify-content: center;
 }
 
-.content{
+.result-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 50vw;
 }
 
-.wikiQuery{
+.wikiQuery, .giphyQuery{
+  display: flex;
   text-align: center;
   margin-top: 100px;
   padding: 50px;
   font-size: 14px;
 }
 
-.giphyQuery{
-  text-align: center;
-  width: 300px;
-  height: 200px;
-  margin: 100px 50 50 0;
-  padding: 50px;
-  font-size: 14px;
+.wikiQuery {
+  justify-content: space-between;
 }
 
-.giphyQuery img {
+.giphy-result-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.giphyQuery{
+  overflow-x: auto;
+  width: 80vw;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* .giphyQuery img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 #logo-wrapper{
   display: flex;
