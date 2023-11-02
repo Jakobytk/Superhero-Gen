@@ -4,6 +4,7 @@ var logoBar = document.getElementById('logo-wrapper');
 var logoTitle = document.querySelector('.logo-title');
 var wikiQueryDiv  = document.querySelector('.wikiQuery');
 var giphyQueryDiv  = document.querySelector('.giphyQuery');
+var heroFactDiv = document.getElementById('hero-fact-text');
 
 // selectors for user selection based on DC or Marvel
 var dcLogoBtn = document.getElementById('dc-logo-btn');
@@ -14,25 +15,19 @@ function getParams() {
   // Get the queryvalues
   var dcQuery = 'DC Comic Hero'
   var marvelQuery = 'Marvel Hero'
-
-  searchApi(dcQuery, marvelQuery);
+  var userQuery = document.getElementById('userInput').value
+  var query = dcQuery
+  //determine which query to use//
+  searchApi(userQuery);
 }
 
 // this function takes query argument and changes wiki url 
 // then returns data on each api
-function searchApi(dcQuery, marvelQuery) {
-  var wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=';
-  var giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q=hero&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
+function searchApi(userQuery) {
+  var wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + userQuery;
+  var giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q=' + userQuery + '&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
 
-  if (dcQuery) {
-    wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + dcQuery;
-    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+ dcQuery +'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
-  }
 
-  if (marvelQuery) {
-    wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + marvelQuery;
-    giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q='+ marvelQuery +'&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
-  }
 
   fetch(wikiQueryUrl)
     .then(function (response) {
@@ -49,7 +44,11 @@ function searchApi(dcQuery, marvelQuery) {
       .then(function (data) {
         console.log(data.query.search);
   
-        wikiQueryDiv.innerHTML = ''; 
+        wikiQueryDiv.innerHTML = '';
+
+       
+
+
   
         data.query.search.forEach(function (wiki) {
           var wikiQuery = document.createElement('a');
@@ -75,8 +74,8 @@ function searchApi(dcQuery, marvelQuery) {
         giphyQueryDiv.appendChild(giphyQuery);
     });
   });
-})
-}
+});
+};
 
 function showDC () {
   console.log('DC');
