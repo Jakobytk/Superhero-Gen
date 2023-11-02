@@ -1,7 +1,6 @@
 // variable for search button
 var submitBtn = document.getElementById('submitBtn');
 var logoBar = document.getElementById('logo-wrapper');
-var footerBar = document.getElementById('footer-wrapper');
 var logoTitle = document.querySelector('.logo-title');
 var wikiQueryDiv  = document.querySelector('.wikiQuery');
 var giphyQueryDiv  = document.querySelector('.giphyQuery');
@@ -81,7 +80,40 @@ function searchApi(userQuery) {
 };
 
 function showDC () {
-  console.log('DC');
+  var dcArr = [
+    'Aquaman',
+    'Batman',
+    'Beast Boy',
+    'Black Adam',
+    'Catwoman',
+    'Cyborg',
+    'Green Arrow',
+    'Green Lanter',
+    'Harley Quinn',
+    'Joker',
+    'Justice League',
+    'Lex Luthor',
+    'Nightwing',
+    'Raven',
+    'Robin',
+    'Shazam',
+    'Starfire',
+    'Superman',
+    'Supergirl',
+    'The Flash',
+    'Titans',
+    'Wonder Woman',
+  ]
+
+  dcArr.forEach(function(option) {
+    var dcMenu = document.getElementById('dc-list');
+    var dcOption = document.createElement('option');
+    dcOption.text = option;
+    dcOption.value = option;
+    dcMenu.appendChild(dcOption);
+
+    console.log(option);
+  });
 }
 
 function showMarvel() {
@@ -127,7 +159,7 @@ function showMarvel() {
 }
 
 submitBtn.addEventListener('click', getParams);
-dcLogoBtn.addEventListener('click', getParams);
+dcLogoBtn.addEventListener('click', showDC);
 marvelLogoBtn.addEventListener('click', showMarvel);
 
 document.getElementById('userInput').addEventListener('keydown', function (e) {
@@ -139,18 +171,15 @@ document.getElementById('userInput').addEventListener('keydown', function (e) {
 
 //reset the page to the defualt style
 logoTitle.addEventListener('click', function (e) {
-  logoBar.style.backgroundColor = "#7800ac";
-  footerBar.style.backgroundColor = "#7800ac";
+  logoBar.style.backgroundColor = "#b300ff";
 });
 
 //set the page to the Marvel style
 marvelLogoBtn.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#EC1D24";
-  footerBar.style.backgroundColor = "#EC1D24";
 });
 
 //reset the page to the DC style
 dcLogoBtn.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#0476F2";
-  footerBar.style.backgroundColor = "#0476F2";
 });
