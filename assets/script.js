@@ -4,7 +4,7 @@ var logoBar = document.getElementById('logo-wrapper');
 var logoTitle = document.querySelector('.logo-title');
 var wikiQueryDiv  = document.querySelector('.wikiQuery');
 var giphyQueryDiv  = document.querySelector('.giphyQuery');
-var heroFactDiv = document.getElementById('hero-fact-text');
+var previousHero = document.getElementById('previous-search');
 
 // selectors for user selection based on DC or Marvel
 var dcLogoBtn = document.getElementById('dc-logo-btn');
@@ -45,8 +45,6 @@ function searchApi(userQuery) {
         console.log(data.query.search);
   
         wikiQueryDiv.innerHTML = '';
-
-       
 
 
   
