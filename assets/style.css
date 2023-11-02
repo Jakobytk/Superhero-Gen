@@ -35,6 +35,30 @@ h1, h2, h3, h4, h5, h6{
   margin-top: 100px;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.marvel-box {
+  display: flex;
+  margin-right: 100px;
+}
+
+.marvel-menu-btn {
+  align-self: flex-start;
+}
+
+#marvel-list {
+  max-height: 100px;
+  overflow: auto;
+}
+
+.dc-box {
+  margin-left: 100px;
+}
+
 .marvel-logo-btn{
   background:url(./images/marvellogo.png) no-repeat;
   background-size: cover;
@@ -46,6 +70,8 @@ h1, h2, h3, h4, h5, h6{
   margin: auto;
   filter: drop-shadow(2px 2px 2px #EC1D24);
 }
+
+
 
 .dc-logo-btn{
   background: url(./images/dclogo2.png) no-repeat;
@@ -98,10 +124,9 @@ h1, h2, h3, h4, h5, h6{
   padding: 0;
 }
 
-/* .giphyQuery img {
-  max-width: 100%;
-  height: auto;
-} */
+.dropdown option {
+  color: black;
+}
 
 #logo-wrapper{
   display: flex;
@@ -189,5 +214,3 @@ h1, h2, h3, h4, h5, h6{
     width: 90%;
   }
 }
-
-

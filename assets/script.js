@@ -13,10 +13,10 @@ var marvelLogoBtn = document.getElementById('marvel-logo-btn');
 
 function getParams() {
   // Get the queryvalues
-  var dcQuery = 'DC Comic Hero'
-  var marvelQuery = 'Marvel Hero'
-  var userQuery = document.getElementById('userInput').value
-  var query = dcQuery
+  var dcQuery = 'DC Comic Hero';
+  var marvelQuery = 'Marvel Hero';
+  var userQuery = document.getElementById('userInput').value;
+  var query = dcQuery;
   //determine which query to use//
   searchApi(userQuery);
 }
@@ -80,12 +80,50 @@ function showDC () {
 }
 
 function showMarvel() {
-  console.log('Marvel');
+  var marvelArr = [
+    'Adam Warlock',
+    'Antman',
+    'Avengers',
+    'Black Panther',
+    'Black Widow',
+    'Captain America',
+    'Captain Marvel',
+    'Daredevil',
+    'Deadpool',
+    'Dr. Strange',
+    'Eternals',
+    'Fantastic Four',
+    'Groot',
+    'Hawkeye',
+    'Hulk',
+    'Iron Man',
+    'Loki',
+    'Moon Knight',
+    'Punisher',
+    'Rocket Raccoon',
+    'Spider-Man',
+    'Spider-Man (Miles Morales)',
+    'Spider-Man (Peter Parker',
+    'Thor',
+    'Wolverine',
+    'X-Men'
+  ]
+
+  marvelArr.forEach(function(option) {
+    var marvelMenu = document.getElementById('marvel-list');
+    var marvelOption = document.createElement('option');
+    marvelOption.text = option;
+    marvelOption.value = option;
+    marvelMenu.appendChild(marvelOption);
+
+    console.log(option);
+  });
+
 }
 
 submitBtn.addEventListener('click', getParams);
 dcLogoBtn.addEventListener('click', getParams);
-marvelLogoBtn.addEventListener('click', getParams);
+marvelLogoBtn.addEventListener('click', showMarvel);
 
 document.getElementById('userInput').addEventListener('keydown', function (e) {
   if (e.which === 13) {
