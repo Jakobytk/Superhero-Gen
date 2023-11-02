@@ -28,6 +28,10 @@ function searchApi(userQuery) {
   var giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q=' + userQuery + '&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
 
 
+  var querySuperHero = {userQuery}
+    localStorage.setItem('name',JSON.stringify(querySuperHero));
+    console.log(JSON.parse(localStorage.getItem('name'))); 
+
 
   fetch(wikiQueryUrl)
     .then(function (response) {
