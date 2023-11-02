@@ -50,16 +50,17 @@ h1, h2, h3, h4, h5, h6{
   margin-right: 100px;
 }
 
-.marvel-menu-btn {
+.marvel-menu-btn, .dc-menu-btn {
   align-self: flex-start;
 }
 
-#marvel-list {
+#marvel-list, #dc-list {
   max-height: 100px;
   overflow: auto;
 }
 
 .dc-box {
+  display: flex;
   margin-left: 100px;
 }
 
