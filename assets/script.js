@@ -1,6 +1,7 @@
 // variable for search button
 var submitBtn = document.getElementById('submitBtn');
 var logoBar = document.getElementById('logo-wrapper');
+var footerBar = document.getElementById('footer-wrapper');
 var logoTitle = document.querySelector('.logo-title');
 var wikiQueryDiv  = document.querySelector('.wikiQuery');
 var giphyQueryDiv  = document.querySelector('.giphyQuery');
@@ -138,15 +139,18 @@ document.getElementById('userInput').addEventListener('keydown', function (e) {
 
 //reset the page to the defualt style
 logoTitle.addEventListener('click', function (e) {
-  logoBar.style.backgroundColor = "#b300ff";
+  logoBar.style.backgroundColor = "#7800ac";
+  footerBar.style.backgroundColor = "#7800ac";
 });
 
 //set the page to the Marvel style
 marvelLogoBtn.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#EC1D24";
+  footerBar.style.backgroundColor = "#EC1D24";
 });
 
 //reset the page to the DC style
 dcLogoBtn.addEventListener('click', function (e) {
   logoBar.style.backgroundColor = "#0476F2";
+  footerBar.style.backgroundColor = "#0476F2";
 });
