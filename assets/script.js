@@ -15,7 +15,7 @@ function getParams() {
   // Get the queryvalues
   var dcQuery = 'DC Comic Hero';
   var marvelQuery = 'Marvel Hero';
-  var userQuery = document.getElementById('userInput').value;
+  var userQuery = 'superhero ' + document.getElementById('userInput').value;
   var query = dcQuery;
   //determine which query to use//
   searchApi(userQuery);
