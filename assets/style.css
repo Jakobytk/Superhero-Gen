@@ -99,13 +99,12 @@ h1, h2, h3, h4, h5, h6{
 
 #previous-search p {
   font-family: sans-serif;
-  margin: 5%;
+  font-size: 17px;
+  margin: 15%;
   flex-direction: row;
   color: white;
-  border-radius: 3%;
-  border-style: solid;
-  border-color: #7800ac;
-  background-color: #7800ac;
+  border-radius: 0;
+  border-style: none;
 }
 
 .dc-logo-btn{

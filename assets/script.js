@@ -56,9 +56,9 @@ function searchApi(userQuery) {
   console.log(JSON.parse(localStorage.getItem('name')));
 
   function previousHeroSearch() {
-    localStorage.getItem('name',JSON.stringify(querySuperHero));
+    localStorage.getItem('name',JSON.stringify(userQuery));
     var heroDiv = document.createElement('p');
-    heroDiv.textContent = ('name',JSON.stringify(querySuperHero));
+    heroDiv.textContent = ('name',JSON.stringify(userQuery));
     previousHero.append(heroDiv);
   }
   
