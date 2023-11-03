@@ -51,6 +51,17 @@ function searchApi(userQuery) {
   localStorage.setItem('name', JSON.stringify(querySuperHero));
   console.log(JSON.parse(localStorage.getItem('name')));
 
+  function previousHeroSearch() {
+    localStorage.getItem('name',JSON.stringify(userQuery));
+    var heroDiv = document.createElement('p');
+    heroDiv.textContent = ('name',JSON.stringify(userQuery));
+    previousHero.append(heroDiv);
+  }
+  
+  previousHeroSearch();
+
+
+
   // Removed the unnecessary fetch that both of the following were nested within
   // We can fetch separately without worrying about asynchronicity because
   //   the data affects entirely different elements in each case.
@@ -100,7 +111,7 @@ function createHeroMenu(heroesArray, menu) {
   heroesArray.forEach(function (hero) {
     var option = document.createElement('option');
     option.text = hero;
-    option.value = hero;
+    option.value = 'Superhero ' + hero;
     menu.appendChild(option);
   })
 }
@@ -196,10 +207,12 @@ function toggleMenu(e) {
   var menuTargeted = e.target.id === "marvel-logo-btn" ? "marvel" : "dc";
 
   if (menuTargeted === "marvel") {
-    marvelMenu.style.display = "block"
-    dcMenu.style.display = "none"
+    document.body.classList.add('marvel-background');
+    marvelMenu.style.display = "block";
+    dcMenu.style.display = "none";
     logoBar.style.backgroundColor = "#EC1D24";
   } else {
+    document.body.classList.add('dc-background');
     dcMenu.style.display = "block"
     marvelMenu.style.display = "none"
     logoBar.style.backgroundColor = "#0476F2";
