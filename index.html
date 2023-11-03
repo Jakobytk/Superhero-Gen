@@ -19,7 +19,7 @@
   <header>
     <nav>
       <div id="logo-wrapper">
-        <h1 class="logo-title" style="font-weight: bold;">SUPERHERO GENERATOR</h1>
+        <h1 class="logo-title" id="logo-title" style="font-weight: bold;">SUPERHERO GENERATOR</h1>
       </div>
     </nav>
   </header>
@@ -31,26 +31,18 @@
         <div class="marvel-box">
           <button class="marvel-logo-btn" id="marvel-logo-btn"></button>
           <!-- dropdown to display marvel menu selection -->
-          <button class="marvel-menu-btn" id="marvel-menu">
+          <button class="marvel-menu-btn display" id="marvel-menu">
             <span style="font-weight: bold; font-size: 16px;">Marvel Heros<span>
                 <i class="bx bx-chevron-down" id="arrow"></i>
-                <!-- 
-                Need containers to be <select> element
-                in order for options to function as inputs
-              -->
                 <select class="dropdown" id="marvel-list"></select>
           </button>
         </div>
         <div class="dc-box"></div>
         <button class="dc-logo-btn" id="dc-logo-btn"></button>
         <!-- dropdown to display dc menu selection -->
-        <button class="dc-menu-btn" id="dc-menu">
+        <button class="dc-menu-btn display" id="dc-menu">
           <span style="font-weight: bold; font-size: 16px;">DC Heros<span>
               <i class="bx bx-chevron-down" id="arrow"></i>
-              <!-- 
-                Need containers to be <select> element
-                in order for options to function as inputs
-              -->
               <select class="dropdown" id="dc-list"></select>
         </button>
       </div>
