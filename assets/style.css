@@ -22,7 +22,7 @@ footer{
   justify-content: center;
   align-items: center;
   height: 100px;
-  background-color: #7800ac;
+  background-color: #790000;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -50,17 +50,16 @@ h1, h2, h3, h4, h5, h6{
   margin-right: 100px;
 }
 
-.marvel-menu-btn, .dc-menu-btn {
+.marvel-menu-btn {
   align-self: flex-start;
 }
 
-#marvel-list, #dc-list {
+#marvel-list {
   max-height: 100px;
   overflow: auto;
 }
 
 .dc-box {
-  display: flex;
   margin-left: 100px;
 }
 
@@ -76,17 +75,20 @@ h1, h2, h3, h4, h5, h6{
   filter: drop-shadow(2px 2px 2px #EC1D24);
 }
 
-.option {
-  margin: 1px;
-  border-radius: 5px;
-  cursor: pointer;
+#previous-search {
+  display: flex;
 }
 
-.option:hover {
-  background-color: darkgrey;
-  transform: scale(1.05);
+#previous-search p {
+  font-family: sans-serif;
+  margin: 5%;
+  flex-direction: row;
+  color: white;
+  border-radius: 3%;
+  border-style: solid;
+  border-color: #7800ac;
+  background-color: #7800ac;
 }
-
 
 .dc-logo-btn{
   background: url(./images/dclogo2.png) no-repeat;
@@ -154,10 +156,6 @@ h1, h2, h3, h4, h5, h6{
 .logo-title{
   text-shadow: 2px 2px black;
   cursor: pointer;
-}
-
-.hero-fact{
-  text-shadow: 2px 2px black;
 }
 
 #userInput{

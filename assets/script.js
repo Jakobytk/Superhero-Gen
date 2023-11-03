@@ -51,6 +51,17 @@ function searchApi(userQuery) {
   localStorage.setItem('name', JSON.stringify(querySuperHero));
   console.log(JSON.parse(localStorage.getItem('name')));
 
+  function previousHeroSearch() {
+    localStorage.getItem('name',JSON.stringify(querySuperHero));
+    var heroDiv = document.createElement('p');
+    heroDiv.textContent = ('name',JSON.stringify(querySuperHero));
+    previousHero.append(heroDiv);
+  }
+  
+  previousHeroSearch();
+
+
+
   // Removed the unnecessary fetch that both of the following were nested within
   // We can fetch separately without worrying about asynchronicity because
   //   the data affects entirely different elements in each case.
