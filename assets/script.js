@@ -100,7 +100,7 @@ function createHeroMenu(heroesArray, menu) {
   heroesArray.forEach(function (hero) {
     var option = document.createElement('option');
     option.text = hero;
-    option.value = hero;
+    option.value = 'Superhero ' + hero;
     menu.appendChild(option);
   })
 }
@@ -196,10 +196,12 @@ function toggleMenu(e) {
   var menuTargeted = e.target.id === "marvel-logo-btn" ? "marvel" : "dc";
 
   if (menuTargeted === "marvel") {
-    marvelMenu.style.display = "block"
-    dcMenu.style.display = "none"
+    document.body.classList.add('marvel-background');
+    marvelMenu.style.display = "block";
+    dcMenu.style.display = "none";
     logoBar.style.backgroundColor = "#EC1D24";
   } else {
+    document.body.classList.add('dc-background');
     dcMenu.style.display = "block"
     marvelMenu.style.display = "none"
     logoBar.style.backgroundColor = "#0476F2";

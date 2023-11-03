@@ -6,7 +6,19 @@ body{
   padding: 0;
   font-family: sans-serif;
   font-size: 12px;
-  background-color: rgb(245, 245, 245);
+  background: url(images/Marvel-DC-Background.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.marvel-background {
+  background: url(images/marvel-background.jpg) no-repeat;
+  background-position: center;
+}
+
+.dc-background {
+  background: url(images/Dc-background.jpg) no-repeat;
+  background-position: center;
 }
 
 header{
