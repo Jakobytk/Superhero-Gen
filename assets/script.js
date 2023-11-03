@@ -1,17 +1,21 @@
 // variable for search button
 var submitBtn = document.getElementById('submitBtn');
-var logoBar = document.getElementById('logo-wrapper');
-var logoTitle = document.querySelector('.logo-title');
 var wikiQueryDiv = document.querySelector('.wikiQuery');
 var giphyQueryDiv = document.querySelector('.giphyQuery');
 var previousHero = document.getElementById('previous-search');
+var logoBar = document.getElementById('logo-wrapper');
+var logoTitle = document.querySelector('.logo-title');
 
-var dcMenu = document.getElementById('dc-list');
-var marvelMenu = document.getElementById('marvel-list');
+var dcMenu = document.getElementById('dc-menu');
+var marvelMenu = document.getElementById('marvel-menu');
+
+var dcList = document.getElementById('dc-list');
+var marvelList = document.getElementById('marvel-list');
 
 // selectors for user selection based on DC or Marvel
 var dcLogoBtn = document.getElementById('dc-logo-btn');
 var marvelLogoBtn = document.getElementById('marvel-logo-btn');
+
 
 // this listener will create and attach the menus whenever the html finishes loading
 document.addEventListener('DOMContentLoaded', attachHeroMenus);
@@ -59,14 +63,6 @@ function searchApi(userQuery) {
   }
   
   previousHeroSearch();
-
-
-
-  // Removed the unnecessary fetch that both of the following were nested within
-  // We can fetch separately without worrying about asynchronicity because
-  //   the data affects entirely different elements in each case.
-  // In other words, we don't know which fetch will return data first, but
-  //   that's okay in this case.
 
   fetch(wikiQueryUrl)
     .then(function (response) {
@@ -174,12 +170,12 @@ function attachHeroMenus() {
     'X-Men'
   ];
 
-  /*dcMenu && marvelMenu selectors are on the global scope,
+  /*dcMenu && marvelList selectors are on the global scope,
   so that they can be referenced again within other functions
   - see `toggleMenu` function below
   */
-  createHeroMenu(dcHeroes, dcMenu)
-  createHeroMenu(marvelHeroes, marvelMenu)
+  createHeroMenu(dcHeroes, dcList)
+  createHeroMenu(marvelHeroes, marvelList)
 }
 
 /* 
@@ -187,7 +183,7 @@ Attach appropriate change listeners to both menus
 There's no need to distinguish them here since they both do the same thing.
 That is - calling the `searchApi` function with the value of the option that was clicked
 */
-[dcMenu, marvelMenu].forEach(function (menu) {
+[dcList, marvelList].forEach(function (menu) {
   // The <select> menu itself is the target whose value changes
   // when one of the <option>s within is clicked.
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
@@ -205,16 +201,19 @@ function toggleMenu(e) {
   // of the target that was clicked, because it uniquely identifies each one.
   // Ternary operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
   var menuTargeted = e.target.id === "marvel-logo-btn" ? "marvel" : "dc";
+  var logoTargeted = e.target.id === "logo-title" ? "title" : "other";
 
   if (menuTargeted === "marvel") {
     document.body.classList.add('marvel-background');
-    marvelMenu.style.display = "block";
-    dcMenu.style.display = "none";
+    marvelMenu.classList.remove('display')
+    marvelList.style.display = "block";
+    dcMenu.classList.add('display')
     logoBar.style.backgroundColor = "#EC1D24";
   } else {
     document.body.classList.add('dc-background');
-    dcMenu.style.display = "block"
-    marvelMenu.style.display = "none"
+    dcMenu.classList.remove('display')
+    dcList.style.display = "block"
+    marvelMenu.classList.add('display')
     logoBar.style.backgroundColor = "#0476F2";
   }
 }
@@ -231,6 +230,9 @@ document.getElementById('userInput').addEventListener('keydown', function (e) {
 
 //reset the page to the defualt style
 logoTitle.addEventListener('click', function (e) {
+  document.body.classList.add('default-bg');
+  dcMenu.classList.add('display')
+  marvelMenu.classList.add('display')
   logoBar.style.backgroundColor = "#b300ff";
 });
 
