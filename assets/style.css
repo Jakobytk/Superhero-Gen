@@ -11,6 +11,12 @@ body{
   background-size: cover;
 }
 
+.default-bg {
+  background: url(images/Marvel-DC-Background.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .marvel-background {
   background: url(images/marvel-background.jpg) no-repeat;
   background-position: center;
@@ -204,6 +210,10 @@ h1, h2, h3, h4, h5, h6{
   cursor: pointer;
   filter: drop-shadow(0px 0px black);
 	transform: translateX(2px) translateY(2px);
+}
+/* hide certain elements on load until target event */
+.display {
+  display: none;
 }
 
 @media(max-width: 600px){
