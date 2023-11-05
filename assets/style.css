@@ -1,10 +1,10 @@
-body{
+body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Comic Neue";
   font-size: 12px;
   background: url(images/Marvel-DC-Background.jpg) no-repeat;
   background-position: center;
@@ -18,36 +18,80 @@ body{
 }
 
 .marvel-background {
-  background: url(images/marvel-background.jpg) no-repeat;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url(images/marvel-background.jpg);
+  background-repeat: no-repeat;
   background-position: center;
 }
 
 .dc-background {
-  background: url(images/Dc-background.jpg) no-repeat;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url(images/Dc-background.jpg);
+  background-repeat: no-repeat;
   background-position: center;
 }
 
-header{
-  font-size: 24px;
+header {
   margin: 0;
   margin-top: -10px;
 }
 
-footer{
-  margin-top: auto;
-  color: white;
+.nav-box {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   height: 100px;
-  background-color: #790000;
+  background-color: #7800ac;
 }
 
-h1, h2, h3, h4, h5, h6{
-  font-size: 24px;
-  margin: 0;
-  padding: 10px 20px;
+#logo-wrapper {
+  margin: auto;
+}
+
+.logo-title {
+  margin: auto;
+  font-size: 40px;
+  text-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+}
+
+#userInput {
+  background-color: white;
+  max-width: 15vw;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px black;
+  font-size: 20px;
+  font-weight: 500;
+  resize: none;
+}
+
+#submitBtn {
+  width: 9em;
   text-align: center;
+  color: white;
+  background-color: #2b967f;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px black;
+  font: 30px;
+  cursor: pointer;
+  margin: 8px;
+}
+
+#submitBtn:hover {
+  background-color: #006d60;
+  box-shadow: 0px 0px 5px 2px rgb(0, 0, 0);
 }
 
 .container {
@@ -68,21 +112,8 @@ h1, h2, h3, h4, h5, h6{
   margin-right: 100px;
 }
 
-.marvel-menu-btn {
-  align-self: flex-start;
-}
-
-#marvel-list {
-  max-height: 100px;
-  overflow: auto;
-}
-
-.dc-box {
-  margin-left: 100px;
-}
-
-.marvel-logo-btn{
-  background:url(./images/marvellogo.png) no-repeat;
+.marvel-logo-btn {
+  background: url(./images/marvellogo.png) no-repeat;
   background-size: cover;
   cursor: pointer;
   border: none;
@@ -90,59 +121,100 @@ h1, h2, h3, h4, h5, h6{
   width: 200px;
   height: 100px;
   margin: auto;
-  filter: drop-shadow(2px 2px 2px #EC1D24);
+  filter: drop-shadow(2px 2px 2px #ec1d24);
 }
 
-#previous-search {
+.marvel-menu-btn,
+.dc-menu-btn {
+  margin: 10px;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.dropdown {
+  background-color: rgba(192, 192, 192, 0.473);
+  max-height: 100px;
+  overflow: auto;
+}
+
+.dropdown option {
+  color: black;
+}
+
+.dc-box {
   display: flex;
+  margin-left: 100px;
 }
 
-#previous-search p {
-  font-family: sans-serif;
-  font-size: 17px;
-  margin: 15%;
-  flex-direction: row;
-  color: white;
-  border-radius: 0;
-  border-style: none;
-}
-
-.dc-logo-btn{
+.dc-logo-btn {
   background: url(./images/dclogo2.png) no-repeat;
   background-size: contain;
-  mix-blend-mode: multiply;
   cursor: pointer;
   border: none;
   border-radius: 50px;
   width: 100px;
   height: 100px;
   margin: auto;
-  filter: drop-shadow(2px 2px 2px #0476F2);
+  filter: drop-shadow(2px 2px 2px #0476f2);
 }
 
-.input-wrapper{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.logo-title:hover,
+#marvel-logo-btn:hover,
+#dc-logo-btn:hover {
+  cursor: pointer;
+  filter: drop-shadow(0px 0px black);
+  transform: translateX(2px) translateY(2px);
+}
+
+.logo-title:hover {
+  text-shadow: 0px 0px black;
 }
 
 .result-container {
-  display: flex;
-  flex-direction: column;
+  margin: 50px;
   justify-content: center;
 }
 
-.wikiQuery, .giphyQuery{
+.wiki-result-box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(121, 0, 0, 0.8);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.wiki-text {
+  margin: 15px auto 15px;
+  padding: 0px;
+  font-size: 24px;
+  color: white;
+}
+
+.wikiQuery,
+.giphyQuery {
   display: flex;
   text-align: center;
-  margin-top: 100px;
+  margin: auto;
   padding: 50px;
   font-size: 14px;
 }
 
 .wikiQuery {
-  justify-content: space-between;
+  flex-direction: column;
+  margin: auto;
+}
+
+.wikiQuery a {
+  margin: 6px;
+  margin-bottom: 15px;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+  background-color: black;
+  font-size: 20px;
 }
 
 .giphy-result-box {
@@ -151,104 +223,143 @@ h1, h2, h3, h4, h5, h6{
   margin-top: 50px;
 }
 
-.giphyQuery{
+.giphyQuery {
   overflow-x: auto;
   width: 80vw;
   margin: 0 auto;
   padding: 0;
 }
 
-.dropdown option {
-  color: black;
+.giphyQuery img {
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px black;
 }
 
-#logo-wrapper{
+footer {
+  margin-top: auto;
+  color: white;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: center;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   background-color: #7800ac;
 }
 
-.logo-title{
-  text-shadow: 2px 2px black;
-  cursor: pointer;
+.favorite-heroes {
+  text-shadow: 2px 2px 5px black;
+  font-size: 32px;
 }
 
-#userInput{
-  width: 70%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+#previous-search {
+  display: flex;
 }
 
-#submitBtn{
+#previous-search p {
+  font-size: 17px;
+  margin: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
   color: white;
-  background-color: #00ad99;
-  text-align: center;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5 auto;
-  padding: 2px 16px 4px;
 }
-
-#submitBtn:hover{
-  background-color: #006d60;
-  box-shadow: 0px 0px 5px 2px rgb(0, 0, 0);
-}
-
-.logo-title:hover{
-  text-shadow: 0px 0px black;
-}
-
-.logo-title:hover,
-#marvel-logo-btn:hover,
-#dc-logo-btn:hover{
-  cursor: pointer;
-  filter: drop-shadow(0px 0px black);
-	transform: translateX(2px) translateY(2px);
-}
-/* hide certain elements on load until target event */
+/* hide certain elements until target event */
 .display {
   display: none;
 }
 
-@media(max-width: 600px){
-  h1, h2, h3, h4, h5, h6{
-    font-size: 16px;
-    margin: 0;
-    padding: 10px 20px;
-    text-align: center;
+@media (max-width: 900px) {
+  .default-bg {
+    background: url(images/Marvel-DC-Background.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
-  .nav-wrapper{
-    padding-top: 0;
+  .marvel-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+      url(images/marvel-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
-  .content{
+  .dc-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+      url(images/Dc-background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .logo-title {
+    font-size: 22px;
+    margin-left: 25px;
+  }
+
+  #userInput {
+    max-width: 80%;
+    border-radius: 10px;
+    margin-right: 25px;
+  }
+
+  #submitBtn {
+    display: none;
+  }
+
+  .input-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 50vw;
-  }
-  
-  .wikiQuery{
-    font-size: 10px;
-  }
-  
-  .giphyQuery{
-    font-size: 10px;
-  }
-  
-  .giphyQuery img {
-    max-width: 70%;
-    height: auto;
   }
 
-  #userInput{
-    width: 90%;
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+  }
+
+  .marvel-box,
+  .dc-box {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .marvel-box {
+    margin-bottom: 20px;
+  }
+
+  .wikiQuery {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .wikiQuery a {
+    position: relative;
+    margin: 6px;
+    padding: 3px;
+    border: none;
+    box-shadow: none;
+    background-color: black;
+    font-size: 12px;
+  }
+
+  .giphyQuery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .giphyQuery img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  footer {
+    height: auto;
+    width: auto;
+    overflow: auto;
   }
 }
