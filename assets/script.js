@@ -34,7 +34,6 @@ function textInputSearch() {
 
 
   var defaultInput = 'Superhero ';
-  var userInput = inputValue;
   var userQuery = defaultInput + inputValue;
   console.log(userInput);
 
@@ -192,7 +191,7 @@ Attach appropriate change listeners to both menus
     }
     previousHeroSearch();
   }
-
+  
   menu.addEventListener('change', handleOptionChange)
 })
 
@@ -205,6 +204,7 @@ function toggleMenu(e) {
 
   if (menuTargeted === "marvel") {
     document.body.classList.add('marvel-background');
+    document.body.classList.remove('dc-background')
     marvelMenu.classList.remove('display')
     marvelList.style.display = "block";
     dcMenu.classList.add('display')
@@ -213,6 +213,7 @@ function toggleMenu(e) {
     footerBar.style.backgroundColor = "#790000";
   } else {
     document.body.classList.add('dc-background');
+    document.body.classList.remove('marvel-background');
     dcMenu.classList.remove('display')
     dcList.style.display = "block"
     marvelMenu.classList.add('display')
