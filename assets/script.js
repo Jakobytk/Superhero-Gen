@@ -3,8 +3,10 @@ var submitBtn = document.getElementById('submitBtn');
 var wikiQueryDiv = document.querySelector('.wikiQuery');
 var giphyQueryDiv = document.querySelector('.giphyQuery');
 var previousHero = document.getElementById('previous-search');
-var logoBar = document.getElementById('logo-wrapper');
-var logoTitle = document.querySelector('.logo-title');
+var logoBar = document.getElementById('navBox');
+var logoTitle = document.getElementById('logo-wrapper');
+var wikiBox = document.getElementById('wiki-result-box');
+var footerBar = document.getElementById('footer-wrapper');
 
 var dcMenu = document.getElementById('dc-menu');
 var marvelMenu = document.getElementById('marvel-menu');
@@ -30,7 +32,12 @@ function textInputSearch() {
   // reject an empty search by cancelling execution
   if (!inputValue) return;
 
-  var userQuery = 'superhero ' + inputValue;
+
+  var defaultInput = 'Superhero ';
+  var userInput = inputValue;
+  var userQuery = defaultInput + inputValue;
+  console.log(userInput);
+
   searchApi(userQuery);
 }
 
@@ -42,23 +49,18 @@ function searchApi(userQuery) {
   var wikiQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=5&srsearch=' + userQuery;
   var giphyQueryUrl = 'https://api.giphy.com/v1/gifs/search?api_key=2Aq30axh0Bdf37VdoDjBnkiUJRXocruK&q=' + userQuery + '&limit=5&offset=0&rating=g&lang=en&bundle=messaging_non_clips';
 
-
   var querySuperHero = {
     userQuery
   }
-  // This seems to be working, I noticed the log in the dev console.
-  // You could attach another 'DOMContentLoaded' listener to the document,
-  //    and in the handler function, check if the last search is stored,
-  //    just like you've done with your JSON.parse here,
-  //    and if it has, call this `searchApi` function with the stored item
-  //    so that the page is populated with data from the last search on load.
+
   localStorage.setItem('name', JSON.stringify(querySuperHero));
   console.log(JSON.parse(localStorage.getItem('name')));
 
   function previousHeroSearch() {
-    localStorage.getItem('name',JSON.stringify(userQuery));
+    localStorage.getItem('name',JSON.stringify(userInput.value));
     var heroDiv = document.createElement('p');
-    heroDiv.textContent = ('name',JSON.stringify(userQuery));
+    heroDiv.classList.add('previous-hero')
+    heroDiv.textContent = ('name',JSON.stringify(userInput.value));
     previousHero.append(heroDiv);
   }
   
@@ -114,7 +116,6 @@ function createHeroMenu(heroesArray, menu) {
 
 /*
 calls `createHeroMenu` for each array literal and its corresponding menu selector
-- see bottom of function for calls to `createHeroMenu`
 */
 function attachHeroMenus() {
   var dcHeroes = [
@@ -125,7 +126,7 @@ function attachHeroMenus() {
     'Catwoman',
     'Cyborg',
     'Green Arrow',
-    'Green Lanter', // typo here
+    'Green Lantern', 
     'Harley Quinn',
     'Joker',
     'Justice League',
@@ -143,7 +144,7 @@ function attachHeroMenus() {
   ];
   var marvelHeroes = [
     'Adam Warlock',
-    'Antman',
+    'Ant-man',
     'Avengers',
     'Black Panther',
     'Black Widow',
@@ -170,51 +171,46 @@ function attachHeroMenus() {
     'X-Men'
   ];
 
-  /*dcMenu && marvelList selectors are on the global scope,
-  so that they can be referenced again within other functions
-  - see `toggleMenu` function below
-  */
   createHeroMenu(dcHeroes, dcList)
   createHeroMenu(marvelHeroes, marvelList)
 }
 
 /* 
 Attach appropriate change listeners to both menus 
-There's no need to distinguish them here since they both do the same thing.
-That is - calling the `searchApi` function with the value of the option that was clicked
 */
 [dcList, marvelList].forEach(function (menu) {
-  // The <select> menu itself is the target whose value changes
-  // when one of the <option>s within is clicked.
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
+  // Change listener with handleOptionChange that gets the value for the <select>
+  // menu option click. 
   function handleOptionChange(e) {
-    searchApi(e.target.value)
+    searchApi(e.target.value);
   }
 
   menu.addEventListener('change', handleOptionChange)
 })
 
+
+
 function toggleMenu(e) {
   // The following line allows for consolidating the logic for toggling
   // into a single function.
-  // All we need to know is which menu to manipulate, so we use the id
-  // of the target that was clicked, because it uniquely identifies each one.
-  // Ternary operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
   var menuTargeted = e.target.id === "marvel-logo-btn" ? "marvel" : "dc";
-  var logoTargeted = e.target.id === "logo-title" ? "title" : "other";
 
   if (menuTargeted === "marvel") {
     document.body.classList.add('marvel-background');
     marvelMenu.classList.remove('display')
     marvelList.style.display = "block";
     dcMenu.classList.add('display')
-    logoBar.style.backgroundColor = "#EC1D24";
+    logoBar.style.backgroundColor = "#790000";
+    logoTitle.style.backgroundColor = "#790000";
+    footerBar.style.backgroundColor = "#790000";
   } else {
     document.body.classList.add('dc-background');
     dcMenu.classList.remove('display')
     dcList.style.display = "block"
     marvelMenu.classList.add('display')
     logoBar.style.backgroundColor = "#0476F2";
+    logoTitle.style.backgroundColor = "#0476F2";
+    footerBar.style.backgroundColor = "#0476F2";
   }
 }
 
@@ -231,22 +227,12 @@ document.getElementById('userInput').addEventListener('keydown', function (e) {
 //reset the page to the defualt style
 logoTitle.addEventListener('click', function (e) {
   document.body.classList.add('default-bg');
+  document.body.classList.remove('marvel-background')
+  document.body.classList.remove('dc-background')
   dcMenu.classList.add('display')
   marvelMenu.classList.add('display')
   logoBar.style.backgroundColor = "#b300ff";
+  logoTitle.style.backgroundColor = "#b300ff";
+  footerBar.style.backgroundColor = "#b300ff";
 });
 
-/* 
-  The following actions could be moved to the `toggleMenu` function,
-  eliminating the need to duplicate click listeners
-*/
-
-//set the page to the Marvel style
-// marvelLogoBtn.addEventListener('click', function (e) {
-//   logoBar.style.backgroundColor = "#EC1D24";
-// });
-
-// //reset the page to the DC style
-// dcLogoBtn.addEventListener('click', function (e) {
-//   logoBar.style.backgroundColor = "#0476F2";
-// });
