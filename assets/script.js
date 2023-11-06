@@ -182,6 +182,14 @@ Attach appropriate change listeners to both menus
   // menu option click. 
   function handleOptionChange(e) {
     searchApi(e.target.value);
+    function previousHeroSearch() {
+      localStorage.getItem('name',JSON.stringify(e.target.value));
+      var heroDiv = document.createElement('p');
+      heroDiv.classList.add('previous-hero')
+      heroDiv.textContent = ('name',JSON.stringify(e.target.value));
+      previousHero.append(heroDiv);
+    }
+    previousHeroSearch();
   }
   
   menu.addEventListener('change', handleOptionChange)
